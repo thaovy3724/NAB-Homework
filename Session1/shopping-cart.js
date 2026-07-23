@@ -15,6 +15,7 @@ function calculateCart(items, discountRate = 0, taxRate = 0.5){
     }
 
     let subtotal = 0;
+    // calculate subtotal
     for(const item of items){
         // validate item
         if(item.name === "" || typeof item.price !== "number" || typeof item.quantity !== "number"){
@@ -31,6 +32,7 @@ function calculateCart(items, discountRate = 0, taxRate = 0.5){
         subtotal+=item.price*item.quantity;
     }
 
+    // calculate total
     const discountAmount = subtotal * discountRate;
     const subtotalAfterDiscount = subtotal - discountAmount;
     const taxAmount = subtotalAfterDiscount * taxRate;
@@ -44,35 +46,38 @@ function calculateCart(items, discountRate = 0, taxRate = 0.5){
 }
 
 // Test scenario
-    console.log("=== Scenario 1: Successfull ===");
-    try{
-        const cart = [
-            {name: "Coca", price: 10, quantity: 2},
-            {name: "Bread", price: 18, quantity: 1}
-        ];
-        console.log(calculateCart(cart, 0.1, 0.02));
-    }catch(error){
-        console.error("Error: ", error.message);
-    }
+// Test 1
+console.log("=== Scenario 1: Successfull ===");
+try{
+    const cart = [
+        {name: "Coca", price: 10, quantity: 2},
+        {name: "Bread", price: 18, quantity: 1}
+    ];
+    console.log(calculateCart(cart, 0.1, 0.02));
+}catch(error){
+    console.error("Error: ", error.message);
+}
 
-    console.log("=== Scenario 2: Invalide item ===");
-    try{
-        const cart = [
-            {name: "Coca", price: -10, quantity: 2},
-            {name: "Bread", price: 18, quantity: 1}
-        ];
-        console.log(calculateCart(cart, 0.1, 0.02));
-    }catch(error){
-        console.error("Error: ", error.message);
-    }
+// Test 2
+console.log("=== Scenario 2: Invalide item ===");
+try{
+    const cart = [
+        {name: "Coca", price: -10, quantity: 2},
+        {name: "Bread", price: 18, quantity: 1}
+    ];
+    console.log(calculateCart(cart, 0.1, 0.02));
+}catch(error){
+    console.error("Error: ", error.message);
+}
 
-    console.log("=== Scenario 3: Invalide tax ===");
-    try{
-        const cart = [
-            {name: "Coca", price: 10, quantity: 2},
-            {name: "Bread", price: 18, quantity: 1}
-        ];
-        console.log(calculateCart(cart, 0.1, 2));
-    }catch(error){
-        console.error("Error: ", error.message);
-    }
+// Test 3
+console.log("=== Scenario 3: Invalide tax ===");
+try{
+    const cart = [
+        {name: "Coca", price: 10, quantity: 2},
+        {name: "Bread", price: 18, quantity: 1}
+    ];
+    console.log(calculateCart(cart, 0.1, 2));
+}catch(error){
+    console.error("Error: ", error.message);
+}
