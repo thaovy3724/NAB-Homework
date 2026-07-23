@@ -40,5 +40,39 @@ function calculateCart(items, discountRate = 0, taxRate = 0.5){
         discountAmount : discountAmount,
         taxAmount: taxAmount,
         total : total
-    }
+    };
 }
+
+// Test scenario
+    console.log("=== Scenario 1: Successfull ===");
+    try{
+        const cart = [
+            {name: "Coca", price: 10, quantity: 2},
+            {name: "Bread", price: 18, quantity: 1}
+        ];
+        console.log(calculateCart(cart, 0.1, 0.02));
+    }catch(error){
+        console.error("Error: ", error.message);
+    }
+
+    console.log("=== Scenario 2: Invalide item ===");
+    try{
+        const cart = [
+            {name: "Coca", price: -10, quantity: 2},
+            {name: "Bread", price: 18, quantity: 1}
+        ];
+        console.log(calculateCart(cart, 0.1, 0.02));
+    }catch(error){
+        console.error("Error: ", error.message);
+    }
+
+    console.log("=== Scenario 3: Invalide tax ===");
+    try{
+        const cart = [
+            {name: "Coca", price: 10, quantity: 2},
+            {name: "Bread", price: 18, quantity: 1}
+        ];
+        console.log(calculateCart(cart, 0.1, 2));
+    }catch(error){
+        console.error("Error: ", error.message);
+    }
