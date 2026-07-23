@@ -1,5 +1,4 @@
-#Shopping cart script
-Assessment week 1
+# Shopping Cart Script - Assessment Week 1
 
-##Run command
+## Run command
 `node shopping-cart.js`
